@@ -39,3 +39,10 @@ input{
     border: 3px ridge yellow;
     padding: 2% 5%;
 }
+.btn{
+    cursor: pointer;
+}
+span {
+    color: red;
+    font-style: italic;
+}

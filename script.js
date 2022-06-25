@@ -18,6 +18,7 @@ fetch("https://api.adviceslip.com/advice")
             console.log(data.slip.advice)
             document.querySelector("p").innerText = data.slip.advice
         })
+        document.getElementById("advice-id").value = ""
     }
 
     document.querySelector("form").addEventListener("submit", (e) =>{
@@ -26,10 +27,16 @@ fetch("https://api.adviceslip.com/advice")
         fetch(`https://api.adviceslip.com/advice/${adviceId.value}`)
         .then((res)=>{
             return res.json()
+        }).catch(error =>{
+            throw(error)
         })
         .then((data)=> {
             console.log(data.slip.advice)
             document.querySelector("p").innerText = data.slip.advice
+        })
+        .catch(error=>{
+            document.querySelector("p").innerHTML = `<span> Error:Enter a number between 1 and 224</span>`
+            console.log(error)
         })
     })
 }
